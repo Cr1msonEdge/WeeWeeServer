@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -20,25 +22,13 @@
     </div>
     <div class="navigation">
         <div class="buttonrow">
-            <div class="buttonelement">
+        {% for m in menu %}
+            <a class="buttonelement" href="{% url m.url_name %}">
               <span class="button">
-                  Главная
+                {{m.title}}
               </span>
-            </div>
-            <div class="buttonelement">
-              <span class="button">
-                  О разработчике
-              </span>
-            </div>
-            <div class="buttonelement">
-              <span class="button">
-                  Библиотека
-              </span>
-            </div>
-            <div class="buttonelement">
-              <span class="button">
-                  Регистрация
-              </span>
+            </a>
+        {% endfor %}
             </div>
         </div>
     </div>

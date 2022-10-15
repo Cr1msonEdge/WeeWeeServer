@@ -5,7 +5,11 @@ from .models import *
 
 # Create your views here.
 
-menu = ['О сайте', 'Добавить моба', 'Обратная связь', 'Войти']
+menu = [{'title': 'Главная', 'url_name': 'home'},
+        {'title': 'О разработчике', 'url_name': 'about'},
+        {'title': 'Библиотека', 'url_name': 'library'},
+        {'title': 'Вход', 'url_name': 'login'}
+        ]
 
 
 def mainPage(request):
@@ -14,24 +18,40 @@ def mainPage(request):
 
 def index(request):  # HttpRequest
     posts = mobs.objects.all()
-    return render(request, 'Game/AvAl_MainPage_extender.html', {'posts': posts, "menu": menu, 'title': 'Главная страница'})
+    context = {
+        'posts': posts,
+        'menu': menu,
+        'title': 'Главная страница'
+    }
+    return render(request, 'Game/AvAl_MainPage_extender.html', context)
 
 
 def about(request):
-    return render(request, 'Game/about.html', {"menu": menu, 'title': 'О сайте'})
+    return render(request, 'Game/about.html', {"menu": menu, 'title': 'О разработчике'})
 
 
-def archive(request, year):
-    if int(year) > 2020:
-        return redirect('home', permanent=True)
+def library(request):
+    posts = mobs.objects.all()
+    context = {
+        'menu': menu,
+        'title': 'Библиотека',
+        'posts': posts
+    }
+    return render(request, 'game/library.html', context)
 
-    return HttpResponse(f"<h1>Архив по годам</h1><p>{year}</p>")
+
+def login(request):
+    return HttpResponse('Авторизация')
 
 
-def categories(request, regslug):
-    if request.POST:
-        print(request.POST)
-    return HttpResponse(f"<h1>Страница регистрации</h1><p>{regslug}</p>")
+def library_mobs(request):
+    posts = mobs.objects.all()
+    return render(request, 'game/AvAl_library.html', {'posts': posts})
+
+
+def show_post(request, post_id):
+    return HttpResponse(f"Отображение статьи с id = {post_id}")
+
 
 
 def pageNotFound(request, exception):

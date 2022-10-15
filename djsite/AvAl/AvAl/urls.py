@@ -23,7 +23,10 @@ from Game.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Game.urls')),  # http://127.0.0.1:8000/game\
-
+    path('about/', about, name='about'),
+    path('library/', library, name='library'),
+    path('login/', login, name='login'),
+    path('post/<int:post_id>', show_post, name='post'),
 ]
 
 if settings.DEBUG:
