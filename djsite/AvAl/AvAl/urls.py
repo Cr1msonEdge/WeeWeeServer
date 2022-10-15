@@ -30,4 +30,4 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = pageNotFound
-#handler500 = serverError
+# handler500 = serverError

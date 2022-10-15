@@ -14,7 +14,7 @@ def mainPage(request):
 
 def index(request):  # HttpRequest
     posts = mobs.objects.all()
-    return render(request, 'Game/index.html', {'posts': posts, "menu": menu, 'title': 'Главная страница'})
+    return render(request, 'Game/AvAl_MainPage_extender.html', {'posts': posts, "menu": menu, 'title': 'Главная страница'})
 
 
 def about(request):
