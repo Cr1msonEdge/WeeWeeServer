@@ -18,10 +18,13 @@ def mainPage(request):
 
 def index(request):  # HttpRequest
     posts = mobs.objects.all()
+    cats = Category.objects.all()
     context = {
         'posts': posts,
+        'cats': cats,
         'menu': menu,
-        'title': 'Главная страница'
+        'title': 'Главная страница',
+        'cat_selected': 0
     }
     return render(request, 'Game/AvAl_MainPage_extender.html', context)
 
@@ -31,11 +34,12 @@ def about(request):
 
 
 def library(request):
-    posts = mobs.objects.all()
+    cats = Category.objects.all()
+
     context = {
         'menu': menu,
         'title': 'Библиотека',
-        'posts': posts
+        'cats': cats
     }
     return render(request, 'game/library.html', context)
 
@@ -46,13 +50,21 @@ def login(request):
 
 def library_mobs(request):
     posts = mobs.objects.all()
-    return render(request, 'game/AvAl_library.html', {'posts': posts})
+
+    context = {
+        'menu': menu,
+        'title': 'Библиотека',
+        'posts': posts
+    }
+    return render(request, 'game/library.html', context)
 
 
 def show_post(request, post_id):
     return HttpResponse(f"Отображение статьи с id = {post_id}")
 
 
+def show_category(request, cat_id):
+    return HttpResponse(f"Отображение категории с id = {cat_id}")
 
 def pageNotFound(request, exception):
     return HttpResponseNotFound('<h2>Page is FUCKED</h2>')
