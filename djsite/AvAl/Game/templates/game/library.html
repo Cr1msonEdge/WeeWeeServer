@@ -1,13 +1,21 @@
 {% extends 'game/AvAl_base.html' %}
 
-<div class="main_tag">{{title}}</div>
 
 {% block information %}
 
-<ul class="catss">
-  {% for c in cats %}
-      <li><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
-  {% endfor %}
+<ul class="list-articles">
+    {% for p in posts %}
+    <li>
+        <h3>{{p.title}}</h3>
+        <p>{{p.content|linebreaks|truncatewords:50}}</p>
+        <div class="link-read-post">
+            <div class="clear"></div>
+            <a class="ss" href="{{p.get_absolute_url}}">Читать пост</a>
+        </div>
+
+        <br>
+    </li>
+    {% endfor %}
 </ul>
 
 {% endblock %}

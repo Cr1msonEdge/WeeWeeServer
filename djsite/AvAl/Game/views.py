@@ -7,10 +7,9 @@ from .models import *
 
 menu = [{'title': 'Главная', 'url_name': 'home'},
         {'title': 'О разработчике', 'url_name': 'about'},
-        {'title': 'Библиотека', 'url_name': 'library'},
+        {'title': 'Авершин', 'url_name': 'Avershin'},
         {'title': 'Вход', 'url_name': 'login'}
         ]
-
 
 def mainPage(request):
     return HttpResponse("<h1>Главная страница</h1>")
@@ -30,33 +29,49 @@ def index(request):  # HttpRequest
 
 
 def about(request):
-    return render(request, 'Game/about.html', {"menu": menu, 'title': 'О разработчике'})
+    cats = Category.objects.all()
+    context = {
+        'menu': menu,
+        'title': 'Разработчик',
+        'cats': cats
+    }
+    return render(request, 'Game/about.html', context=context)
 
 
 def library(request):
     cats = Category.objects.all()
-
     context = {
         'menu': menu,
         'title': 'Библиотека',
         'cats': cats
     }
-    return render(request, 'game/library.html', context)
+    return render(request, 'game/library.html', context=context)
 
 
 def login(request):
     return HttpResponse('Авторизация')
 
 
-def library_mobs(request):
-    posts = mobs.objects.all()
-
+def Avershin(request):
+    cats = Category.objects.all()
     context = {
         'menu': menu,
         'title': 'Библиотека',
-        'posts': posts
+        'cats': cats
     }
-    return render(request, 'game/library.html', context)
+    return render(request, 'game/avershin.html', context=context)
+
+
+def library_mobs(request):
+    posts = mobs.objects.all()
+    cats = Category.objects.all()
+    context = {
+        'menu': menu,
+        'title': 'Библиотека',
+        'posts': posts,
+        'cats': cats,
+    }
+    return render(request, 'game/library.html', context=context)
 
 
 def show_post(request, post_id):
@@ -64,7 +79,19 @@ def show_post(request, post_id):
 
 
 def show_category(request, cat_id):
-    return HttpResponse(f"Отображение категории с id = {cat_id}")
+    posts = mobs.objects.filter(cat_id=cat_id)
+    cats = Category.objects.all()
+
+    context = {
+        'posts': posts,
+        'cats': cats,
+        'menu': menu,
+        'title': 'Отображение по категориям',
+        'cat_selected': cat_id,
+    }
+
+    return render(request, 'game/library.html', context=context)
+
 
 def pageNotFound(request, exception):
     return HttpResponseNotFound('<h2>Page is FUCKED</h2>')

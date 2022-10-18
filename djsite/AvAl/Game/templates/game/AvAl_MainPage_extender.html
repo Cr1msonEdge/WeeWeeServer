@@ -3,5 +3,22 @@
 {% block information %}
 <p>Главная страница</p>
 <p>Лучшая игра про квадраты бля</p>
+<br><br><br>
+
+<ul>
+    {% for p in posts %}
+    <li>
+        <h3>{{p.title}}</h3>
+        <p>{{p.content|linebreaks|truncatewords:50}}</p>
+        <div class="link-read-post">
+            <div class="clear"></div>
+            <a class="ss" href="{{ p.get_absolute_url }}">Читать пост</a>
+        </div>
+
+        <br>
+    </li>
+    {% endfor %}
+</ul>
+
 
 {% endblock %}

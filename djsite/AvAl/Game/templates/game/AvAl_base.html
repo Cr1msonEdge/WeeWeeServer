@@ -6,20 +6,22 @@
     <link rel="shortcut icon" href="/images/YaroSlaveIcon.jpg" type="image/jpg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1200">
-    <link rel="stylesheet" href="../static/game/css/AvAl_style.css">
+    <link rel="stylesheet" href="../../static/game/css/AvAl_style.css">
     <title>Avershin&Alcohol</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&family=PT+Sans:ital@1&family=Passions+Conflict&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&family=PT+Sans:ital@1&family=Passions+Conflict&family=Raleway:ital,wght@1,100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&family=PT+Sans:ital@1&family=Passions+Conflict&family=Raleway:ital,wght@1,100&family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="main_content">
+    <!-- logo -->
     <div class="main_title">
         <div class="title_text">
             Avershin & Alcohol
         </div>
     </div>
+
+    <!-- top navigation -->
     <div class="navigation">
         <div class="buttonrow">
         {% for m in menu %}
@@ -29,19 +31,40 @@
               </span>
             </a>
         {% endfor %}
-            </div>
         </div>
     </div>
 
-    <div>
-        <div class="Main_block">
-            <div class="Main_information">
-                {% block information %}
 
-                {% endblock %}
-            </div>
+    <!-- Side navigation -->
+    <div class="sidenav">
+
+        {% if cat_selected == 0 %}
+            <a href="#" class="selected">Все категории</a>
+        {% else %}
+            <a href="{% url 'home' %}">Все категории</a>
+        {% endif %}
+
+        {% for c in cats %}
+            {% if cat_selected == c.pk %}
+                <a href="#" class="selected">{{c.name}}</a>
+            {% else %}
+                <a href="{{ c.get_absolute_url }}">{{c.name}}</a>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+
+
+
+    <div class="Main_block">
+        <div class="Main_information">
+            <div class="main_tag">{{title}}</div>
+            {% block information %}
+
+            {% endblock %}
         </div>
     </div>
+
 
 </div>
 

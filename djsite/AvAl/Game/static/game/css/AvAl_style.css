@@ -40,6 +40,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
 .main_content{
     background: #d6f5f5;
     text-align: center;
+    width: 100%;
 }
 
 .main_tag{
@@ -56,8 +57,8 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
 
 .title_text{
     font-family: 'Passions Conflict', cursive;
-    color: lightgoldenrodyellow;
-    text-shadow: 1px 2px 1px antiquewhite;
+    color: white;
+    text-shadow: 1px 2px 1px #01035b;
     font-size: 120px;
     font-style: italic;
     font-weight: 1;
@@ -68,13 +69,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
     vertical-align: middle;
     width: 100%;
     height: 50px;
-}
-
-.clear{
-    text-align: right;
-    height: 20px;
-
-    width: 70%;
 }
 
 .ss{
@@ -103,7 +97,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
     padding: 50px 0;
     height: 200px;
     position: relative;
-    background-image: url("../images/pattern.svg");
+    background-color: #98A8F8;
 }
 
 .navigation{
@@ -113,10 +107,11 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
 }
 
 .Main_block{
-    background-image: url("../images/pattern (1).svg");
+    background-color: #CDFCF6;
     height: 2000px;
     width: 100%;
-    padding: 0 350px;
+    padding-left: 400px;
+    padding-right: 400px;
 }
 
 .buttonrow{
@@ -128,16 +123,19 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
 }
 
 .Main_information{
-    background-color: white;
+    background-color: #FAF7F0;
     background-size: 100% 100%;
     border: 1px solid black;
-    box-shadow: 1px 1px 10px 1px antiquewhite;
+    border-top-width: 0;
+
     width: 100%;
     height: 1000px;
     padding: 10px;
     transition-duration: 1s;
     transition-delay: 500ms;
     text-align: left;
+    position: relative;
+    z-index: 2;
 }
 
 .Introduce_text{
@@ -152,6 +150,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
 }
 
 .buttonelement{
+    display: block;
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
     font-size: 30px;
@@ -161,12 +160,51 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
     padding: 35px 0;
     width: 34%;
     top: 50%;
-    background-image: url("../images/ButtonNotActive.svg");
-    transition-duration: 700ms;
+    background-color: #BCCEF8;
+    transition-duration: 500ms;
     transition-timing-function: linear;
 }
 
 .buttonelement:hover{
-    background-image: url("../images/ButtonActive.svg");
-    text-shadow: 1px 1px 1px #663300;   
+    background-color: #9FC9F3;
+}
+
+.sidenav{
+    width: 300px;
+    height: 250px;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    padding-top: 20px;
+    padding-left: 5%;
+}
+
+.sidenav a{
+    padding: 10px 8px 10px 16px;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    font-size: 24px;
+    display: block;
+    transition-duration: 300ms;
+}
+
+.sidenav a:hover{
+    background-color: #9FC9F3;
+}
+
+.selected{
+    background-color: #d2e6f9;
+}
+
+.AvBio{
+    width: 100%;
+    height: 1000px;
+    background-image: url("../images/AvershinBio.png");
+    background-size: 100%;
+    transition-duration: 700ms;
+}
+
+.AvBio:hover{
+    background-image: url("../images/YaroSlaveIcon.jpg");
+    background-size: 100%;
 }
