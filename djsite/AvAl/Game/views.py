@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 
 from .models import *
@@ -74,20 +74,30 @@ def library_mobs(request):
     return render(request, 'game/library.html', context=context)
 
 
-def show_post(request, post_id):
-    return HttpResponse(f"Отображение статьи с id = {post_id}")
+def show_post(request, post_slug):
+    post = get_object_or_404(mobs, slug=post_slug)
+
+    context = {
+        'post': post,
+        'menu': menu,
+        'title': post.title,
+        'cat_selected': 1,
+    }
+
+    return render(request, 'game/post.html', context=context)
 
 
-def show_category(request, cat_id):
-    posts = mobs.objects.filter(cat_id=cat_id)
+def show_category(request, cat_slug):
     cats = Category.objects.all()
+    cat = Category.objects.get(slug=cat_slug)
+    posts = mobs.objects.filter(cat=cat.pk)
 
     context = {
         'posts': posts,
         'cats': cats,
         'menu': menu,
         'title': 'Отображение по категориям',
-        'cat_selected': cat_id,
+        'cat_selected': cat.slug,
     }
 
     return render(request, 'game/library.html', context=context)

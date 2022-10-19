@@ -1,0 +1,11 @@
+{% extends 'game/AvAl_base.html' %}
+
+{% block information %}
+<h1>{{post.title}}</h1>
+
+{% if post.photo %}
+<p><img src="{{post.photo.url}}" alt="No photo found" class="img-article-left"></p>
+{% endif %}
+
+{{ post.content|linebreaks }}
+{% endblock %}
