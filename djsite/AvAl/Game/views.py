@@ -76,12 +76,12 @@ def library_mobs(request):
 
 def show_post(request, post_slug):
     post = get_object_or_404(mobs, slug=post_slug)
-
+    cat = Category.objects.get(pk=post.cat_id)
     context = {
         'post': post,
         'menu': menu,
         'title': post.title,
-        'cat_selected': 1,
+        'cat_selected': cat.slug,
     }
 
     return render(request, 'game/post.html', context=context)

@@ -58,7 +58,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
 
 .title_text{
     font-family: 'Passions Conflict', cursive;
-    color: white;
+    color: red;
     text-shadow: 1px 2px 1px #01035b;
     font-size: 120px;
     font-style: italic;
@@ -73,11 +73,15 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
 }
 
 .ss{
-    text-align: center;
-    line-height: 30px;
-    vertical-align: middle;
     display: block;
-    background-color: antiquewhite;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    line-height: 25px;
+    vertical-align: middle;
+    background-color: #ffe6ff;
+    border: 3px solid #cc99ff;
+    border-radius: 10%;
     height: 30px;
     width: 20%;
 }
@@ -124,6 +128,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
 .Main_information{
     background-color: #FAF7F0;
     border: 1px solid black;
+    border-top-width: 0;
     width: 100%;
     height: 4000px;
     padding: 10px;
@@ -203,4 +208,30 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
 .AvBio:hover{
     background-image: url("../images/YaroSlaveIcon.jpg");
     background-size: 100%;
+}
+
+.article-flex{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.vofo{
+    display: block;
+}
+
+.img-article{
+    display: block;
+    height: 100px;
+    width: 100px;
+    padding: 0;
+}
+
+.article-content{
+    position: relative;
+    margin-left: 30px;
+    height: auto;
+    width: 200px;
 }

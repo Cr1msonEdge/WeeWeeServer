@@ -10,13 +10,27 @@
             <p class="first">Категория: {{p.cat}}</p>
             <p class="last">Дата {{p.time_update|date:"d-m-Y H:i:s"}}</p>
             {% if p.photo %}
-                <img src="{{ p.photo.url }}" alt="no image" class="img-article">
+                <span>xnjnj</span>
+                <div class="article-flex">
+                    <div class="vofo">
+                        <img src="{{ p.photo.url }}" alt="no image" class="img-article">
+                    </div>
+                    <div class="article-content">
+                        <h2>{{p.title}}</h2>
+                        <p>{{p.content|linebreaks|truncatewords:50}}</p>
+                    </div>
+                </div>
+            {% else %}
+
+                <div class="article-content">
+                    <h2>{{p.title}}</h2>
+                    <p>{{p.content|linebreaks|truncatewords:50}}</p>
+                </div>
             {% endif %}
-            <h2>{{p.title}}</h2>
-            <p>{{p.content|linebreaks|truncatewords:50}}</p>
+
             <div class="link-read-post">
                 <div class="clear"></div>
-                <a class="ss" href="{{p.get_absolute_url}}">Читать пост</a>
+                <a class="ss" href="{{ p.get_absolute_url }}">Читать пост</a>
             </div>
         </div>
         <br>
