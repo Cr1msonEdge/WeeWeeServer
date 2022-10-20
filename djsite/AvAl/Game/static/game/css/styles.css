@@ -74,10 +74,12 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
 
 .ss{
     text-align: center;
-    line-height: 30px;
+    line-height: 25px;
     vertical-align: middle;
     display: block;
-    background-color: antiquewhite;
+    background-color: #ffe6ff;
+    border: 3px  solid #cc99ff;
+    border-radius: 10%;
     height: 30px;
     width: 20%;
 }
@@ -128,6 +130,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
     height: 4000px;
     padding: 10px;
     transition-duration: 1s;
+    border-top-width: 0;
     transition-delay: 500ms;
     text-align: left;
     position: relative;
@@ -191,6 +194,34 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
 .selected{
     background-color: #d2e6f9;
 }
+
+.article-flex{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.vofo{
+    display: block;
+}
+
+.img-article{
+    display: block;
+    height: 100px;
+    width: 100px;
+    padding: 0;
+}
+
+.article-content{
+    position: relative;
+    margin-left: 30px;
+    height: auto;
+    width: 200px;
+}
+
+
 
 .AvBio{
     width: 100%;
