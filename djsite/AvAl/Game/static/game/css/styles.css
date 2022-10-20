@@ -235,3 +235,8 @@ h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400}
     background-image: url("../images/YaroSlaveIcon.jpg");
     background-size: 100%;
 }
+
+.form-input{
+    border: 1px solid black;
+    border-radius: 5%;
+}

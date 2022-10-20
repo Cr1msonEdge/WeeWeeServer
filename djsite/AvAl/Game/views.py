@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 
+from .forms import *
 from .models import *
 
 # Create your views here.
@@ -8,11 +9,33 @@ from .models import *
 menu = [{'title': 'Главная', 'url_name': 'home'},
         {'title': 'О разработчике', 'url_name': 'about'},
         {'title': 'Авершин', 'url_name': 'Avershin'},
+        {'title': 'Отзыв', 'url_name': 'addcomment'},
         {'title': 'Вход', 'url_name': 'login'}
         ]
 
+
 def mainPage(request):
     return HttpResponse("<h1>Главная страница</h1>")
+
+
+def addcomment(request):
+    if request.method == 'POST':
+        form = AddCommForm('POST')
+        if form.is_valid():
+            #  print(form.cleaned_data)
+            try:
+                mobs.object.create(**form.cleaned_data)
+                return redirect('home')
+            except:
+                form.add_error(None, 'Ошибка добавления отзыва')
+    else:
+        form = AddCommForm()
+    context = {
+        'menu': menu,
+        'title': 'Добавить отзыв',
+        'form': form,
+    }
+    return render(request, 'Game/addcomment.html', context=context)
 
 
 def index(request):  # HttpRequest
@@ -25,7 +48,7 @@ def index(request):  # HttpRequest
         'title': 'Главная страница',
         'cat_selected': 0
     }
-    return render(request, 'Game/AvAl_MainPage_extender.html', context)
+    return render(request, 'Game/AvAl_MainPage_extender.html', context=context)
 
 
 def about(request):
@@ -56,7 +79,7 @@ def Avershin(request):
     cats = Category.objects.all()
     context = {
         'menu': menu,
-        'title': 'Библиотека',
+        'title': 'Александр Сергеевич Авершин',
         'cats': cats
     }
     return render(request, 'game/avershin.html', context=context)
