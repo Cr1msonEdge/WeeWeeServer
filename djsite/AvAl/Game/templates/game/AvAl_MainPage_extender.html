@@ -9,14 +9,14 @@
 {% for p in posts %}
     <li>
         <div class="article_block">
-            <p class="first">Категория: {{p.cat}}</p>
-            <p class="last">Дата {{p.time_created|date:"d-m-Y H:i:s"}}</p>
             <div class="article-flex">
-                {% if p.photo %}
-                <img src="{{ p.photo.url }}" alt="no image" class="img-article">
-                {% endif %}
-                <h2>{{p.title}}</h2>
-                <p>{{p.content|linebreaks|truncatewords:30}}</p>
+                <div class="post_title">{{p.title}}</div>
+                <div class="post_text">
+                    {% if p.photo %}
+                    <img src="{{ p.photo.url }}" alt="no image" class="img-article">
+                    {% endif %}
+                    {{p.content|linebreaks|truncatewords:30}}
+                </div>
             </div>
             <div class="link-read-post">
                 <a class="ss" href="{{ p.get_absolute_url }}">Читать пост</a>
