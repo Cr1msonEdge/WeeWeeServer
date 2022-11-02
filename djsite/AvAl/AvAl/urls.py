@@ -22,14 +22,15 @@ from Game.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Game.urls')),  # http://127.0.0.1:8000/game\
+    path('', Home.as_view(), name='home'),  # http://127.0.0.1:8000/game\
     path('about/', about, name='about'),
     path('library/', library, name='library'),
     path('Avershin/', Avershin, name='Avershin'),
     path('login/', login, name='login'),
-    path('addcomment/', addcomment, name='addcomment'),
-    path('post/<slug:post_slug>/', show_post, name='post'),
-    path('category/<slug:cat_slug>/', show_category, name='category'),
+    path('addcomment/', AddPage.as_view(), name='addcomment'),
+    path('post/<slug:post_slug>/', ShowPost.as_view(), name='post'),
+    path('category/<slug:cat_slug>/', MobsCategory.as_view(), name='category'),
+    path('register/', RegisterUser.as_view(), name='register')
 ]
 
 if settings.DEBUG:

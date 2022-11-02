@@ -1,7 +1,7 @@
 
 
 {% for c in cats %}
-    {% if cat_selected == c.slug %}
+    {% if cat_selected == c.pk %}
         <a href="#" class="selected">{{c.name}}</a>
     {% else %}
         <a href="{{ c.get_absolute_url }}">{{c.name}}</a>

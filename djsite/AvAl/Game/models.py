@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Count
 
 # Create your models here.
 from django.urls import reverse
@@ -11,7 +12,7 @@ class mobs(models.Model):
     photo = models.ImageField(upload_to="photos/%Y/%m/%d/", blank=True, verbose_name='Изображение')
     time_created = models.DateTimeField(auto_now_add=True, verbose_name="Дата публикации")
     time_updated = models.DateTimeField(auto_now=True, verbose_name='Дата последнего изменения')
-    is_published = models.BooleanField(default=True, verbose_name='Выложено')
+    is_published = models.BooleanField(default=False, verbose_name='Выложено')
     cat = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name='Категория')
 
     def __str__(self):
